@@ -1,0 +1,58 @@
+#include <iostream>
+#include <cstring>
+#include <algorithm>
+#include <vector> 
+/*
+#include <fstream>
+std::string nume="paritatesiruri";
+std::ifstream fin(nume+".in");
+std::ofstream fout(nume+".out");*/
+int main()
+{
+    int marime,maxi=0;
+    std::string tot;
+    getline(std::cin,tot);
+    for(int i=0;i<tot.length();i++)
+    {
+        if(tot[i]!=' ')
+        {
+            marime=0;
+            bool ok=false;
+            while(tot[i]!=' '&&i<tot.length())
+            {
+               if((int(tot[i])>=65&&int(tot[i])<=90)||(int(tot[i])>=97&&int(tot[i])<=122))ok=true;
+               marime++;
+               i++;
+            }
+            if(ok){
+               maxi=std::max(maxi,marime);
+            }
+        }
+    }
+    for(int i=0;i<tot.length();i++)
+    {
+        if(tot[i]!=' ')
+        {
+            marime=0;
+            bool ok=false;
+            while(tot[i]!=' '&&i<tot.length())
+            {
+               if((int(tot[i])>=65&&int(tot[i])<=90)||(int(tot[i])>=97&&int(tot[i])<=122))ok=true;
+               marime++;
+               i++;
+            }
+            if(marime==maxi&&ok){
+               int dr=i-1,st=i-marime;
+               while(dr>=st&&st<tot.length()&&dr>=0)
+               {
+                   std::swap(tot[dr],tot[st]);
+                   st++;
+                   dr--;
+               }
+            }
+        }
+    }
+    std::cout<<tot;
+}
+//nume.insert(5, " are ");. , ! ?
+//Mara  23a4 1234 %&a* %&*( are mere
